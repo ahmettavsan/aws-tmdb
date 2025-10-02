@@ -1,0 +1,30 @@
+<div class="w-72 max-h-96 rounded-t-lg overflow-none relative">
+  <div class="h-3/4 bg-red-400">
+    <div class="absolute right-2 top-2 text-white">
+      <svg
+        (click)="this.emitId.emit(id)"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6 cursor-pointer"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+        />
+      </svg>
+    </div>
+    <img [ngSrc]="imagePath!" width="320" height="240" class="aspect-auto" />
+  </div>
+</div>
+
+<div
+  class="min-h-12 max-w-full bg-white opacity-80 truncate text-[18px] relative px-2"
+>
+  <p class="">
+    {{ title && title.length < 30 ? title : title?.slice(0, 30) + "..." }}
+  </p>
+</div>

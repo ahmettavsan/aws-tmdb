@@ -1,0 +1,10 @@
+<div class="">
+  <h2 mat-dialog-title>Hi</h2>
+  <mat-dialog-content>
+    <app-json-form [config]="configuration" [form]="form"></app-json-form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button>No Thanks</button>
+    <button mat-button cdkFocusInitial (click)="save()">Ok</button>
+  </mat-dialog-actions>
+</div>

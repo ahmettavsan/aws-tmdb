@@ -1,0 +1,8 @@
+<div
+  class="flex flex-col gap-4 justify-center items-center content-center h-[90vh]"
+>
+  <span class="block font-bold text-[24px]">Login</span>
+  <app-json-form [config]="this.config" [form]="this.form">
+    <app-button [text]="'Login'" (click$)="this.print()"> </app-button>
+  </app-json-form>
+</div>

@@ -1,0 +1,63 @@
+<form [formGroup]="this.form">
+  <ng-container *ngIf="this.config">
+    <div *ngFor="let item of this.config">
+      <div class="m-2 p-2" *ngIf="item.type === 'text'">
+        <label class="block hover:cursor-move">
+          {{ item.title }}
+          <span *ngIf="item.required" class="font-bold m-0 p-0">*</span>
+        </label>
+        <input
+          class="border-b-4 w-full outline-none border-none shadow-3xl"
+          type="text"
+          [formControlName]="item.key"
+          [required]="item.required"
+        />
+      </div>
+
+      <div class="m-2 p-2" *ngIf="item.type === 'email'">
+        <label class="block hover:cursor-move">
+          {{ item.title }}
+          <span *ngIf="item.required" class="font-bold m-0 p-0">*</span>
+        </label>
+        <input
+          class="border-b-4 w-full outline-none border-none shadow-3xl"
+          type="email"
+          [formControlName]="item.key"
+          [required]="item.required"
+        />
+      </div>
+
+      <div class="m-2 p-2" *ngIf="item.type === 'password'">
+        <label class="block hover:cursor-move">
+          {{ item.title }}
+          <span *ngIf="item.required" class="font-bold m-0 p-0">*</span></label
+        >
+        <input
+          class="border-b-4 w-full outline-none border-none shadow-3xl"
+          type="password"
+          [formControlName]="item.key"
+          [required]="item.required"
+        />
+      </div>
+
+      <div class="m-2 p-2" *ngIf="item.type === 'select'">
+        <label class="block hover:cursor-move">
+          {{ item.title }}
+          <span *ngIf="item.required" class="font-bold m-0 p-0">*</span></label
+        >
+        <select
+          class="border-b-4 w-full outline-none border-none shadow-3xl"
+          type=""
+          [formControlName]="item.key"
+          [required]="item.required"
+        >
+          <option *ngFor="let option of item.options">
+            {{ option[item.bindLabel!] }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </ng-container>
+</form>
+
+<ng-content></ng-content>

@@ -1,0 +1,25 @@
+<ng-container
+  class="gap-4 relative"
+  *ngIf="this.moviService.movie$ | async as movie"
+>
+  <div
+    *ngIf="movie.Pending"
+    class="flex justify-center fixed inset-0 bg-black/50 backdrop-blur-sm z-[999] items-center top-0 left-0 w-full h-full"
+  >
+    <app-loader></app-loader>
+  </div>
+  <div *ngIf="movie.Error">{{ movie.Error }}</div>
+
+  <app-filter></app-filter>
+  <ng-container *ngIf="movie.Result as movies">
+    <div class="flex gap-4 flex-wrap">
+      <app-card
+        *ngFor="let movie of movies.results"
+        [imagePath]="'https://image.tmdb.org/t/p/w1280/' + movie.poster_path"
+        [title]="movie.title"
+        [id]="movie.id"
+        (emitId)="setFavorite($event)"
+      ></app-card>
+    </div>
+  </ng-container>
+</ng-container>
