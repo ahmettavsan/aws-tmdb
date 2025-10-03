@@ -1,0 +1,35 @@
+name: CI/CD - Angular Docker Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: [self-hosted] 
+
+    steps:
+      - name: Runner Durumu Kontrolü
+        run: echo "İşlem EC2 Self-Hosted Runner üzerinde başlatılıyor..."
+
+      - name: Kodu Çekme
+        uses: actions/checkout@v4
+        
+      - name: Docker Imajını Build Etme
+        run: |
+          docker build -t angular-app:latest .
+          echo "Docker imajı başarıyla oluşturuldu: angular-app:latest"
+
+      - name: Eski Konteyneri Temizleme
+        run: |
+          docker stop angular-app-live || true 
+          docker rm angular-app-live || true 
+
+      - name: Yeni Konteyneri Çalıştırma ve Yayınlama
+        run: |
+          docker run -d \
+            --name angular-app-live \
+            -p 80:80 \
+            angular-app:latest
+          echo "Uygulama başarıyla 80. portta başlatıldı."
