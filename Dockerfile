@@ -2,13 +2,13 @@ FROM node:20-alpine as build-stage
 
 WORKDIR /app
 
-COPY *.json . /app/
+COPY *.json . 
 
 RUN npm install 
 
 COPY . .
 
-RUN npm run build
+RUN npm run build --prod
 
 
 FROM nginx:alpine
