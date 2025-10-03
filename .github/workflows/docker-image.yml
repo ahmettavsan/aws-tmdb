@@ -9,8 +9,8 @@ on:
 # 2. İş Tanımı
 jobs:
   build_and_deploy:
-    # Runner'ı hedefleme: Etiketlerinizi buraya yazın!
-    runs-on: [self-hosted, linux] 
+   
+    runs-on: [self-hosted] 
 
     steps:
       - name: Runner Durumu Kontrolü
